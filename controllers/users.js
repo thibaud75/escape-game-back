@@ -6,9 +6,12 @@ const User = require("../models/Users");
 
 // SIGNUP
 exports.signup = (req, res, next) => {
+  // Si le password existe dans le body
   if (req.body.password) {
+    // utilisation de bcrypt pour hasher le password
     bcrypt
       .hash(req.body.password, 10)
+      // Je passe le body de la requete dans un objet + le password hash
       .then((hash) => {
         const user = new User({
           email: req.body.email,
@@ -22,8 +25,9 @@ exports.signup = (req, res, next) => {
           .catch((error) => res.status(400).json({ error }));
       })
       .catch((error) => res.status(500).json({ error }));
+    // Si le password n'existe pas
   } else {
-    res.status(500).json({ error });
+    res.status(500).json({ error: "Le mot de passe n'est pas fourni" });
   }
 };
 

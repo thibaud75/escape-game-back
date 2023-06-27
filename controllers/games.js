@@ -14,6 +14,10 @@ exports.getAllGames = (req, res, next) => {
 
 exports.getOneGame = (req, res, next) => {
   Games.findOne({ id: req.params.id })
-    .then((games) => {res.status(200).json(games)})
-    .catch((error) => {res.status(400).json({error:error})});
+    .then((games) => {
+      res.status(200).json(games);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error });
+    });
 };

@@ -1,0 +1,1 @@
+const gamesCtrl = require("../controllers/games")

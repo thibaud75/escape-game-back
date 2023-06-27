@@ -7,7 +7,7 @@ const app = express();
 // ROUTES
 
 const usersRoutes = require("./routes/users");
-// const gamesRoutes = require("./routes/games")
+const gamesRoutes = require("./routes/games")
 
 const cors = require("cors");
 

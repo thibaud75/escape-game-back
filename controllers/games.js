@@ -1,3 +1,3 @@
-const Games = require('../models/Users')
+// const Games = require('../models/Users')
 
-export.getAllGames(()=>)
+// export.getAllGames(()=>)

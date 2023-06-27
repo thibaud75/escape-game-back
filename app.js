@@ -7,7 +7,7 @@ const app = express();
 // ROUTES
 
 const usersRoutes = require("./routes/users");
-const gamesRoutes = require("./routes/games")
+const gamesRoutes = require("./routes/games");
 
 const cors = require("cors");
 
@@ -32,6 +32,5 @@ app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
 
-// app.use("/images", express.static(path.join(__dirname, "images")));
-// app.use("/api/post", postRoutes);
 app.use("/auth", usersRoutes);
+app.use("/games", gamesRoutes);

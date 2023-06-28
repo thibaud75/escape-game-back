@@ -7,7 +7,8 @@ const app = express();
 // ROUTES
 
 const usersRoutes = require("./routes/users");
-const gamesRoutes = require("./routes/games")
+const gamesRoutes = require("./routes/games");
+const disponibilityRoutes = require("./routes/disponibility");
 
 const cors = require("cors");
 
@@ -41,3 +42,4 @@ app.listen(3000, () => {
 
 app.use("/auth", usersRoutes);
 app.use("/games", gamesRoutes);
+app.use("/disponibility", disponibilityRoutes);

@@ -3,6 +3,6 @@ const router = express.Router();
 
 const disponibilityCtrl = require("../controllers/disponibility");
 
-router.post("/reserveForm", disponibilityCtrl.reserveForm);
+router.post("/reserveform", disponibilityCtrl.reserveForm);
 
 module.exports = router;

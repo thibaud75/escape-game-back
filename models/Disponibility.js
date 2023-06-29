@@ -5,6 +5,7 @@ const disponibilitySchema = mongoose.Schema({
   disponibility: [
     {
       date: { type: String },
+      users: [Object],
     },
   ],
   gameId: { type: String, required: true },

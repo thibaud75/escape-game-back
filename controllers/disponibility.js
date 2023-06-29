@@ -15,9 +15,10 @@ exports.reserveForm = (req, res, next) => {
 };
 
 exports.history = (req, res, next) => {
-  Disponibility.findOne({ userId: req.params.userId })
+  Disponibility.find({ userId: req.params.id })
     .then((dispo) => {
       res.status(200).json(dispo);
+      console.log(dispo);
     })
     .catch((error) => {
       res.status(400).json({ error: error });

@@ -7,7 +7,7 @@ exports.reserveForm = (req, res, next) => {
   dispo
     .save()
     .then(() => {
-      res.status(201).json({ message: "Date réservée", dispo });
+      res.status(201).json({ message: "Date réservée" , dispo});
     })
     .catch((error) => {
       res.status(400).json({ error });
@@ -27,6 +27,18 @@ exports.history = (req, res, next) => {
 
 exports.getDates = (req, res, next) => {
   Disponibility.find({ gameId: req.params.id })
+    .then((dispo) => {
+      res.status(200).json(dispo);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    });
+};
+
+exports.getAllDispo = (req, res, next) => {
+  Disponibility.find()
     .then((dispo) => {
       res.status(200).json(dispo);
     })

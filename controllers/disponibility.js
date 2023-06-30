@@ -24,3 +24,15 @@ exports.history = (req, res, next) => {
       res.status(400).json({ error: error });
     });
 };
+
+exports.getDates = (req, res, next) => {
+  Disponibility.find({ gameId: req.params.id })
+    .then((dispo) => {
+      res.status(200).json(dispo);
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    });
+};

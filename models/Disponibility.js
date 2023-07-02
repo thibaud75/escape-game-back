@@ -8,8 +8,8 @@ const disponibilitySchema = mongoose.Schema({
       users: [Object],
     },
   ],
-  gameId: { type: String, required: false },
-  userId: { type: String, required: false },
+  gameId: { type: String, required: true },
+  userId: { type: String, required: true },
 });
 
 disponibilitySchema.plugin(uniqueValidator);

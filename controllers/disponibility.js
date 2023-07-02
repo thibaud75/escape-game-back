@@ -48,3 +48,17 @@ exports.getAllDispo = (req, res, next) => {
       });
     });
 };
+
+exports.getOneDispo = (req, res, next) => {
+  Disponibility.findOne({
+    id: req.params.id,
+  })
+    .then((dispo) => {
+      res.status(200).json(dispo);
+    })
+    .catch((error) => {
+      res.status(404).json({
+        error: error,
+      });
+    });
+};

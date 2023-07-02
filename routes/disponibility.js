@@ -8,5 +8,6 @@ router.post("/reserveform", auth, disponibilityCtrl.reserveForm);
 router.get("/history/:id", disponibilityCtrl.history);
 router.get("/getdates/:id", disponibilityCtrl.getDates);
 router.get("/getalldispo", disponibilityCtrl.getAllDispo);
+router.get("/getonedispo/:id", auth, disponibilityCtrl.getOneDispo);
 
 module.exports = router;

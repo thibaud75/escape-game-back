@@ -4,7 +4,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 const disponibilitySchema = mongoose.Schema({
   disponibility: [
     {
-      date: { type: String },
+      date: { type: String, unique: true },
       users: [Object],
     },
   ],

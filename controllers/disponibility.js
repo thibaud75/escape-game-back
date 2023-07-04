@@ -1,17 +1,30 @@
 const Disponibility = require("../models/Disponibility");
 
-exports.reserveForm = (req, res, next) => {
+exports.reserveForm = async (req, res, next) => {
   console.log(req.body.dispo);
   console.log(req.auth);
-  const dispo = new Disponibility(req.body.dispo);
-  dispo
-    .save()
-    .then(() => {
-      res.status(201).json({ message: "Date réservée", dispo });
-    })
-    .catch((error) => {
-      res.status(400).json({ error });
+
+  try {
+    const existingDisponibility = await Disponibility.findOne({
+      gameId: req.body.dispo.gameId,
+      "disponibility.date": req.body.dispo.disponibility[0].date,
     });
+
+    if (existingDisponibility) {
+      res
+        .status(404)
+        .json(
+          "L'escape game est déjà reservé pour cette horaire! Veuillez choisir un autre horrair disponible! "
+        );
+    } else {
+      const dispo = new Disponibility(req.body.dispo);
+      await dispo.save();
+      res.status(201).json({ message: "Date réservée", dispo });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error });
+  }
 };
 
 exports.history = (req, res, next) => {

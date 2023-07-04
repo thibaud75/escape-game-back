@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
+
+const userSchema = mongoose.Schema({
+  Prenom: { type: String, required: true },
+  Nom: { type: String, required: true },
+  Date: { type: String, required: true },
+});
 
 const disponibilitySchema = mongoose.Schema({
   disponibility: [
     {
-      date: { type: String, unique: true },
-      users: [Object],
+      users: [userSchema],
+      date: { type: String },
     },
   ],
   gameId: { type: String, required: true },
@@ -13,7 +18,5 @@ const disponibilitySchema = mongoose.Schema({
   userId: { type: String, required: true },
   id: { type: String },
 });
-
-disponibilitySchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("Disponibility", disponibilitySchema);

@@ -18,6 +18,7 @@ exports.signup = (req, res, next) => {
           password: hash,
           name: req.body.name,
           lastname: req.body.lastname,
+          birthday: req.body.birthday,
           id: req.body.id,
         });
         user

@@ -14,7 +14,7 @@ exports.reserveForm = async (req, res, next) => {
       res
         .status(404)
         .json(
-          "L'escape game est déjà reservé pour cette horaire! Veuillez choisir un autre horrair disponible! "
+          "L'escape game est déjà reservé pour cette horaire! Veuillez choisir un autre horraire disponible! "
         );
     } else {
       const dispo = new Disponibility(req.body.dispo);

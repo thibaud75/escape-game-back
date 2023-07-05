@@ -6,6 +6,11 @@ const adminMiddleware = require("../middleware/adminMiddleware");
 const disponibilityCtrl = require("../controllers/disponibility");
 
 router.post("/reserveform", auth, disponibilityCtrl.reserveForm);
+router.post(
+  "/reserveformadmin",
+  adminMiddleware,
+  disponibilityCtrl.reserveFormAdmin
+);
 router.get("/getonedispo/:id", auth, disponibilityCtrl.getOneDispo);
 router.delete(
   "/deleteReserv/:id",

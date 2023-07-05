@@ -51,6 +51,7 @@ exports.login = (req, res, next) => {
               .json({ message: "Paire login/mot de passe incorrecte" });
           }
           res.status(200).json({
+            user,
             userName: user.name,
             userId: user._id,
             token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
@@ -63,6 +64,7 @@ exports.login = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
+// INFOS SUR USERS
 exports.getUserInfos = (req, res, next) => {
   User.findOne({ _id: req.params.id })
     .then((user) => {
@@ -71,4 +73,9 @@ exports.getUserInfos = (req, res, next) => {
     .catch((error) => {
       res.status(400).json({ error: error });
     });
+};
+
+// PROTEGER ADMIN AVEC MIDDLEWAR
+exports.onlyAdmin = (req, res) => {
+  res.status(201).json({ message: "Requête correcte tu es un patron" });
 };

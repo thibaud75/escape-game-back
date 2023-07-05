@@ -75,3 +75,25 @@ exports.getOneDispo = (req, res, next) => {
       });
     });
 };
+
+exports.deleteReserv = (req, res, next) => {
+  Disponibility.findOne({ id: req.params.id })
+    .then((dispo) => {
+      if (dispo) {
+        Disponibility.deleteOne({ id: req.params.id })
+          .then(() => {
+            res
+              .status(200)
+              .json({ message: "Réservation supprimée avec succès" });
+          })
+          .catch((error) => {
+            res.status(500).json({ error: error });
+          });
+      } else {
+        res.status(404).json({ message: "Réservation introuvable" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error });
+    });
+};

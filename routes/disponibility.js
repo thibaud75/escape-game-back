@@ -15,5 +15,6 @@ router.delete(
 router.get("/history/:id", disponibilityCtrl.history);
 router.get("/getdates/:id", disponibilityCtrl.getDates);
 router.get("/getalldispo", disponibilityCtrl.getAllDispo);
+router.delete("/deleteReservUser/:id", auth, disponibilityCtrl.deleteReserv);
 
 module.exports = router;
